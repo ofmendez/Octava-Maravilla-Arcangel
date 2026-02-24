@@ -1,1 +1,122 @@
-.
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- ========== CACHE CONTROL (opcional, como tu ejemplo) ========== -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- ========== METADATOS BÁSICOS ========== -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <title>Arcángel | La 8va Maravilla</title>
+  <meta name="description" content="Muy pronto: 'La 8va Maravilla' de Arcángel. El countdown ya comenzó." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- ✅ Cambia esto por tu URL real -->
+  <link rel="canonical" href="https://la8vamaravilla.com" />
+
+  <!-- ========== SEO SOCIAL: OPEN GRAPH ========== -->
+  <meta property="og:type" content="music.album" />
+  <meta property="og:site_name" content="Arcángel | La 8va Maravilla" />
+  <meta property="og:title" content="Arcángel | La 8va Maravilla" />
+  <meta property="og:description" content="Muy pronto: 'La 8va Maravilla' de Arcángel." />
+  <meta property="og:url" content="https://la8vamaravilla.com" />
+  <!-- ✅ Cambia por tu imagen OG 1200x630 -->
+  <meta property="og:image" content="https://la8vamaravilla.com/assets/cover_8vamaravilla.jpg" />
+  <meta property="og:locale" content="es_CO" />
+
+  <!-- ========== SEO SOCIAL: TWITTER / X ========== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Arcángel | La 8va Maravilla" />
+  <meta name="twitter:description" content="Muy pronto: 'La 8va Maravilla' de Arcángel." />
+  <meta name="twitter:image" content="https://la8vamaravilla.com/assets/cover_8vamaravilla.jpg" />
+
+  <!-- ========== FUENTES ========== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- ========== ESTILOS ========== -->
+  <link rel="stylesheet" href="./css/stylescountdown.css" />
+
+  <!-- ========== PRELOAD FONDOS (performance) ========== -->
+  <link rel="preload" as="image" href="./assets/bg-desktop.webp" media="(min-width:769px)">
+  <link rel="preload" as="image" href="./assets/bg-mobile.webp" media="(max-width:768px)">
+
+  <!-- ========== FAVICON ========== -->
+  <!-- ✅ Cambia el archivo/ruta real -->
+  <link rel="icon" type="image/png" href="./assets/favicon_8vamaravilla.png">
+
+  <!-- ========== PERFORMANCE ========== -->
+  <meta name="view-transition" content="same-origin">
+
+  <!-- ========== DATOS ESTRUCTURADOS (JSON-LD) ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicAlbum",
+    "@id": "https://la8vamaravilla.com#countdown",
+    "name": "La 8va Maravilla",
+    "description": "Muy pronto: 'La 8va Maravilla' de Arcángel. El countdown ya comenzó.",
+    "image": "OG_IMAGE_1200x630_AQUI",
+    "url": "https://la8vamaravilla.com",
+    "inLanguage": "es",
+    "datePublished": "2026-03-03T12:00:00-05:00",
+    "byArtist": {
+      "@type": "MusicGroup",
+      "name": "Arcángel",
+      "sameAs": [
+        "https://www.instagram.com/arcangel/",
+        "https://www.youtube.com/@Arcangel",
+        "https://www.tiktok.com/@arcangel",
+        "https://twitter.com/arcangel"
+      ]
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://la8vamaravilla.com"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Fondo fijo -->
+  <div class="bg" aria-hidden="true"></div>
+
+  <main class="page">
+   <section class="center">
+
+  <!-- LOGO ARRIBA -->
+  <img class="top-logo" src="./assets/logo-la-8va-maravilla.svg" alt="La 8va Maravilla" />
+
+  <!-- <p class="kicker">Arcángel presenta La 8va Maravilla</p>-->
+
+  <div class="countdown" role="timer" aria-live="polite">
+    <div class="cd-block">
+      <span class="cd-num" id="dd">10</span><span class="cd-unit">D</span>
+    </div>
+    <div class="cd-block">
+      <span class="cd-num" id="hh">04</span><span class="cd-unit">H</span>
+    </div>
+    <div class="cd-block">
+      <span class="cd-num" id="mm">03</span><span class="cd-unit">M</span>
+    </div>
+    <div class="cd-block">
+      <span class="cd-num" id="ss">25</span><span class="cd-unit">S</span>
+    </div>
+  </div>
+
+</section>
+
+    <footer class="footer">
+  <img class="tour-bg" src="./assets/tour.svg" alt="" aria-hidden="true">
+</footer>
+  </main>
+
+  <script src="./js/app.js"></script>
+</body>
+</html>

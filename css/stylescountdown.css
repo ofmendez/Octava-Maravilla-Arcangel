@@ -1,0 +1,221 @@
+/* =========================
+   Reset + Variables
+========================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; }
+
+:root{
+  --poppins: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --bebas: "Bebas Neue", sans-serif;
+
+  --vh: 1vh; /* se corrige por JS */
+  --text: rgba(255,255,255,0.72);
+  --muted: rgba(255,255,255,0.55);
+  --outline: rgba(255,255,255,0.35);
+}
+
+body{
+  font-family: var(--poppins);
+  height: calc(var(--vh) * 100);
+  overflow: hidden; /* no scroll */
+  background: #000;
+  color: var(--text);
+}
+
+/* =========================
+   Fondo fijo full-screen
+========================= */
+.bg{
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  /* Imagen (si quieres) + viñeta */
+  background-image:
+    radial-gradient(ellipse at center, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.65) 60%, rgba(0,0,0,0.92) 100%),
+    url("../assets/bg-desktop.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* móvil */
+@media (max-width: 768px){
+  .bg{
+    background-image:
+      radial-gradient(ellipse at center, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.70) 60%, rgba(0,0,0,0.95) 100%),
+      url("../assets/bg-mobile.webp");
+    background-position: center;
+  }
+}
+
+/* =========================
+   Layout general
+========================= */
+.page{
+  position: relative;
+  z-index: 1;
+  height: calc(var(--vh) * 100);
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.center{
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 18px;
+  padding: 24px;
+  text-align: center;
+}
+
+/* Texto superior */
+.kicker{
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+/* =========================
+   Countdown (look del ref)
+========================= */
+.countdown{
+  display: flex;
+  gap: 42px;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.cd-block{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0px;
+}
+
+/* Números */
+.cd-num{
+  font-family: var(--bebas);
+  font-size: clamp(72px, 10vw, 128px);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.78);
+  line-height: 0.85;
+}
+
+/* Letras D H M S (outline) */
+.cd-unit{
+  font-family: var(--bebas);
+  font-size: clamp(72px, 10vw, 128px);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 0.85;
+
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.38);
+}
+
+/* Ajuste en pantallas chicas */
+@media (max-width: 520px){
+  .kicker{ font-size: 16px; }
+  .countdown{ gap: 18px; }
+}
+
+/* =========================
+   Footer (logo + texto)
+========================= */
+.footer{
+  display: grid;
+  place-items: center;
+  padding: 22px 16px 28px;
+}
+
+.footer-inner{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.9;
+}
+
+.footer-logo{
+  height: auto;
+  width: 20vw;
+  display: block;
+}
+
+.footer-text{
+  font-family: var(--bebas);
+  font-size: 18px;
+  letter-spacing: 0.35em;
+  color: rgba(255,255,255,0.75);
+  transform: translateY(1px);
+}
+
+/* logo superior */
+.top-logo{
+  height: auto;
+  width: 20vw;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+/* =========================
+   TOUR SVG fondo inferior
+========================= */
+
+.footer{
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 40px 16px 60px;
+}
+
+/* svg detrás */
+.tour-bg{
+  position: absolute;
+  bottom: 0px;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100vw;
+  height: auto;
+
+  z-index: -1;          /* 👈 detrás del contenido */
+  pointer-events: none; /* no bloquea clicks */
+}
+
+/* =========================
+   Countdown vertical en móvil
+========================= */
+@media (max-width: 768px){
+
+  .countdown{
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;   /* <- CLAVE: centra cada cd-block */
+  }
+
+  .cd-block{
+    justify-content: center;
+    width: auto;
+  }
+
+.top-logo{
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    width: 70vw;
+  }
+
+
+ .cd-num,
+  .cd-unit{
+    font-size: clamp(84px, 20vw, 140px);
+  }
+
+}
