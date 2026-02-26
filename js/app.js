@@ -35,3 +35,30 @@ function tick(){
 
 tick();
 setInterval(tick, 1000);
+
+// Detectar timezone
+const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+// Detectar idioma / región
+const locale = navigator.language || navigator.userLanguage;
+
+// Enviar como evento a GA
+gtag('event', 'user_context', {
+  timezone: timezone,
+  locale: locale
+});
+
+function getUTMParams() {
+  const params = new URLSearchParams(window.location.search);
+
+  const utmData = {
+    utm_source: params.get('utm_source'),
+    utm_medium: params.get('utm_medium'),
+    utm_campaign: params.get('utm_campaign'),
+    utm_content: params.get('utm_content')
+  };
+
+  gtag('event', 'utm_visit', utmData);
+}
+
+getUTMParams();
