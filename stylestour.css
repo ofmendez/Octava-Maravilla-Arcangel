@@ -1,0 +1,584 @@
+/* =========================
+   RESET
+========================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+img { max-width: 100%; display: block; }
+
+/* =========================
+   VARIABLES
+========================= */
+:root{
+  --bg: #0e0e0e;
+  --text: #fff;
+  --muted: rgba(255,255,255,.75);
+
+  --pad: 28px;
+
+  --logoSize: 120px;
+  --logoTop: 22px;
+
+  --footerBottom: 14px;
+  --footerH: 44px;
+
+  /* “zonas seguras” para que el contenido arranque debajo del logo
+     y termine antes del legal (esto es para el layout visual) */
+  --safeTop: calc(var(--logoTop) + var(--logoSize) + 18px);
+  --safeBottom: calc(var(--footerBottom) + var(--footerH) + 18px);
+}
+
+/* =========================
+   BASE
+========================= */
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* Scroll en cualquier parte */
+  overflow-y: auto;
+}
+
+/* wrapper general */
+.page{
+  position: fixed;
+  inset: 0;
+  min-height: 0;   /* importante: no sumar 100vh al documento */
+}
+
+/* Este div le da altura al body para el “fake scroll” (JS lo recalcula) */
+#scroll-spacer{
+  height: 200vh; /* fallback; JS lo ajusta */
+}
+
+/* =========================
+   DESKTOP LAYOUT (DEFAULT)
+   - pantalla fija en 2 columnas
+   - body scrollea
+   - solo se mueve right__inner con JS (transform)
+========================= */
+.layout{
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 50vw 50vw;
+}
+
+/* LEFT */
+.left{
+  position: relative;
+}
+
+.left__media{
+  position: relative;
+  width: 50vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.left__img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* según tu código actual */
+  object-position: center;
+  filter: contrast(1.05);
+}
+
+.left__overlay{
+  position: absolute;
+  inset: 0;
+}
+
+/* RIGHT (NO scroll interno) */
+.right{
+  position: relative;
+  width: 50vw;
+  height: 100vh;
+  overflow: hidden; /* recorta lo que “pase” por arriba/abajo */
+}
+
+/* Este es el contenido que se mueve con JS */
+.right__inner{
+  height: auto;
+  overflow: visible;
+  will-change: transform;
+
+  /* antes: calc(var(--pad) + var(--safeTop)) */
+  padding-top: var(--safeTop);
+
+  /* padding lateral normal */
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+
+  /* antes: calc(var(--pad) + var(--safeBottom)) */
+  padding-bottom: var(--safeBottom);
+}
+
+/* =========================
+   LOGO (DESKTOP FIXED CENTER)
+========================= */
+.tour-logo{
+  position: fixed;
+  top: var(--logoTop);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+
+  width: var(--logoSize);
+  height: var(--logoSize);
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.tour-logo img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* =========================
+   TITLES
+========================= */
+.title-svg{
+  width: min(420px, 80%);
+  margin: 0 auto 10px;
+}
+
+.subtitle{
+  text-align: center;
+  font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: .3px;
+  margin: 25px 0;
+}
+
+/* =========================
+   LEGAL (DESKTOP FIXED)
+========================= */
+.legal{
+  position: fixed;
+  left: 50%;
+  bottom: var(--footerBottom);
+  transform: translateX(-50%);
+  z-index: 25;
+
+  font-size: 14px;
+  color: rgba(255,255,255,.7);
+  text-align: center;
+  width: min(520px, 92vw);
+  pointer-events: none;
+}
+
+/* =========================
+   DATES LIST
+========================= */
+.dates{
+  display: grid;
+  gap: 10px;
+}
+
+.date-row{
+  display: grid;
+  grid-template-columns: 1.2fr 1.4fr auto;
+  align-items: center;
+  padding: 14px 14px;
+  border-radius: 0;
+}
+
+.date-row.is-alt{
+  background: rgba(255,255,255,.10);
+}
+
+.date-left{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.date-icon{
+  width: 22px;
+  height: 22px;
+  opacity: .95;
+  flex: 0 0 auto;
+}
+
+.date-place{ min-width: 0; }
+
+.date-city{
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.05;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.date-country{
+  font-size: 14px;
+  opacity: .8;
+  margin-top: 2px;
+}
+
+.date-mid{
+  min-width: 0;
+  padding: 0 10px;
+}
+
+.date-venue{
+  font-size: 16px;
+  opacity: .9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.date-right{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.date-day{
+  font-weight: 600;
+  font-size: 16px;
+  opacity: .95;
+  letter-spacing: .3px;
+  min-width: 52px;
+  text-align: right;
+}
+
+.date-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.55);
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: .2px;
+  transition: transform .12s ease, background .12s ease, opacity .12s ease;
+}
+
+.date-btn:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.06);
+}
+
+.date-btn.is-disabled{
+  opacity: .35;
+  pointer-events: none;
+}
+
+.btn-icon{
+  width: 14px;
+  height: 14px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+/* =========================
+   MOBILE (<= 900px)
+   - layout vertical
+   - scroll normal (sin fake scroll)
+========================= */
+@media (max-width: 900px){
+  :root{
+    --pad: 18px;
+    --logoSize: 92px;
+    --logoTop: 0px;
+    --safeTop: 0px;
+    --safeBottom: 0px;
+  }
+
+  /* en mobile no queremos layout fixed */
+  .layout{
+    position: relative;
+    inset: auto;
+    display: block;
+    min-height: auto;
+  }
+
+  /* desactiva el spacer en mobile (no se usa fake scroll) */
+  #scroll-spacer{
+    height: 0 !important;
+  }
+
+  /* logo en flujo normal, arriba izq */
+  .tour-logo{
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 35vw;
+    height: 35vw;
+    margin: 7vw 0 10px 7vw;
+    z-index: 5;
+  }
+
+  /* izquierda: imagen en flujo normal */
+  .left__media{
+    width: 100%;
+    height: 52vh;
+    min-height: 340px;
+    max-height: 560px;
+    margin-top: -7vh;
+  }
+
+  /* derecha en flujo normal */
+  .right{
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .right__inner{
+    transform: none !important; /* importante: no fake scroll */
+    padding: 18px 16px 22px;
+  }
+
+  /* legal al final */
+  .legal{
+    position: relative;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    width: 100%;
+    padding: 18px 16px 22px;
+    pointer-events: auto;
+  }
+
+  /* tabla en mobile */
+  .date-row{
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "left right";
+    padding: 14px 12px;
+  }
+
+  .date-mid{ display: none; }
+  .date-left{ grid-area: left; }
+  .date-right{ grid-area: right; }
+
+  .dates{
+
+    width:100%;
+  }
+}
+
+
+
+
+@media (min-width: 900px){
+  .dates{
+ max-width: 720px;   /* ajusta a lo que quieras */
+  width: 100%;
+  margin: 0 auto;     /* la centra dentro del panel derecho */
+}
+
+.signup{
+  max-width: 720px;   /* ajusta a lo que quieras */
+  width: 100%;
+  margin: 0 auto;     /* la centra dentro del panel derecho */
+}
+
+}
+
+
+/* La ventana visible de la derecha */
+.right-viewport{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* clave: recorta el contenido */
+}
+
+/* Fade superior/inferior que tapa el contenido al acercarse */
+@media (min-width: 901px){
+  .right-viewport::before,
+  .right-viewport::after{
+    content:"";
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  /* arriba: cubre hasta debajo del logo */
+  .right-viewport::before{
+    top: 0;
+    height: var(--safeTop);
+    background: linear-gradient(
+      to bottom,
+      var(--bg) 0%,
+      var(--bg) 55%,
+      rgba(14,14,14,0) 100%
+    );
+  }
+
+  /* abajo: cubre hasta encima del footer */
+  .right-viewport::after{
+    bottom: 0;
+    height: var(--safeBottom);
+    background: linear-gradient(
+      to top,
+      var(--bg) 0%,
+      var(--bg) 55%,
+      rgba(14,14,14,0) 100%
+    );
+  }
+
+  /* asegúrate que el contenido esté por debajo de las máscaras */
+  .right__inner{ position: relative; z-index: 1; }
+  .tour-logo{ z-index: 30; }
+  .legal{ z-index: 30; }
+}
+
+@media (max-width: 900px){
+
+  /* Nada fixed en mobile */
+  .page,
+  .layout{
+    position: relative !important;
+    inset: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Si usas el wrapper del fade */
+  .right-viewport{
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Ningún panel debe recortar */
+  .left,
+  .right{
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* La imagen no debe ser fixed */
+  .left__media{
+    position: relative !important;
+    width: 100% !important;
+    height: 52vh;         /* como lo tienes */
+    min-height: 340px;
+    max-height: 560px;
+  }
+
+  /* El contenido derecho debe fluir normal (sin transform) */
+  .right__inner{
+    transform: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* El spacer no existe en mobile */
+  #scroll-spacer{
+    display: none !important;
+    height: 0 !important;
+  }
+}
+
+/* =========================
+   SUSCRIPCION
+========================= */
+.signup{
+  display: grid;
+  gap: 10px;
+  padding-top: 60px;
+}
+
+.signup__title{
+  font-family:"Poppins", sans-serif;
+  font-weight:700;
+  font-size: 28px;
+  color: rgba(255,255,255,.92);
+  margin-top: auto;
+}
+
+.signup__text{
+  font-family:"Poppins", sans-serif;
+  font-weight:400;
+  font-size: 13px;
+  color: rgba(255,255,255,.72);
+  margin-bottom: 8px;
+}
+
+.signup__social{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.signup__social a{
+  display:inline-flex;
+  width: 24px;
+  height: 24px;
+  opacity: .9;
+  transition:.2s;
+}
+.signup__social a:hover{ opacity: 1; transform: translateY(-1px); }
+
+.signup__social img{
+  width: 24px;
+  height: 24px;
+  display:block;
+}
+
+.signup__cta{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  width: 100%;
+  height: 54px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.60);
+  color: rgba(255,255,255,.88);
+  text-decoration:none;
+  font-family:"Poppins", sans-serif;
+  font-size: 13px;
+
+  background: rgba(0,0,0,.18);
+  backdrop-filter: blur(6px);
+  transition:.2s;
+}
+
+.signup__cta:hover{
+  background: rgba(0,0,0,.28);
+  border-color: rgba(255,255,255,.80);
+}
+
+
+/* Responsive: apilar */
+@media (max-width: 900px){
+ .signup{
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+}
+
+.date-btn.is-coming{
+  border: 1px solid rgba(255,255,255,.25);
+  color: rgba(255,255,255,.55);
+  background: transparent;
+  cursor: default;
+}
+
+.date-btn.is-coming:hover{
+  transform: none;
+  background: transparent;
+}
