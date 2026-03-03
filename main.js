@@ -10,50 +10,54 @@
 
   const now = Date.now();
 
-  root.innerHTML = dates.map((d, i) => {
-    const city = escapeHtml(d.city || "");
-    const country = escapeHtml(d.country || "");
-    const venue = escapeHtml(d.venue || "");
-    const date = formatDDMM(d.dateISO);
+  root.innerHTML = dates
+    .map((d, i) => {
+      const city = escapeHtml(d.city || "");
+      const country = escapeHtml(d.country || "");
+      const venue = escapeHtml(d.venue || "");
+      const date = formatDDMM(d.dateISO);
 
-    const url = (d.ticketUrl || "").trim();
-    const saleStart = d.saleStartUTC ? Date.parse(d.saleStartUTC) : Infinity;
+      const url = (d.ticketUrl || "").trim();
 
-    // Solo se habilita si hay link Y ya pasó la hora programada
-    const canBuy = !!url && now >= saleStart;
+      // saleStartUTC es OPCIONAL:
+      // - si existe: habilita el botón cuando llegue esa hora
+      // - si NO existe: si hay link, se habilita de inmediato
+      const saleStart = d.saleStartUTC ? Date.parse(d.saleStartUTC) : null;
+      const canBuy = !!url && (saleStart === null || now >= saleStart);
 
-    return `
-      <article class="date-row ${i % 2 ? "is-alt" : ""}">
-        <div class="date-left">
-          <img class="date-icon" src="./assets/assets.svg" alt="" aria-hidden="true" />
-          <div class="date-place">
-            <div class="date-city">${city}</div>
-            <div class="date-country">${country}</div>
+      return `
+        <article class="date-row ${i % 2 ? "is-alt" : ""}">
+          <div class="date-left">
+            <img class="date-icon" src="./assets/assets.svg" alt="" aria-hidden="true" />
+            <div class="date-place">
+              <div class="date-city">${city}</div>
+              <div class="date-country">${country}</div>
+            </div>
           </div>
-        </div>
 
-        <div class="date-mid">
-          <div class="date-venue">${venue}</div>
-        </div>
+          <div class="date-mid">
+            <div class="date-venue">${venue}</div>
+          </div>
 
-        <div class="date-right">
-          <div class="date-day">${date}</div>
+          <div class="date-right">
+            <div class="date-day">${date}</div>
 
-          ${
-            canBuy
-              ? `<a class="date-btn"
-                   href="${url}"
-                   target="_blank"
-                   rel="noopener">
-                   tickets
-                   <img class="btn-icon" src="./assets/tickets-icon.svg" alt="" aria-hidden="true" />
-                 </a>`
-              : `<span class="date-btn is-coming" aria-disabled="true">Coming Soon</span>`
-          }
-        </div>
-      </article>
-    `;
-  }).join("");
+            ${
+              canBuy
+                ? `<a class="date-btn"
+                     href="${escapeAttr(url)}"
+                     target="_blank"
+                     rel="noopener">
+                     tickets
+                     <img class="btn-icon" src="./assets/tickets-icon.svg" alt="" aria-hidden="true" />
+                   </a>`
+                : `<span class="date-btn is-coming" aria-disabled="true">Coming Soon</span>`
+            }
+          </div>
+        </article>
+      `;
+    })
+    .join("");
 })();
 
 function formatDDMM(dateISO) {
@@ -73,25 +77,38 @@ function escapeHtml(str) {
   }[m]));
 }
 
+// Para atributos (href, etc.). Evita romper el HTML si hay comillas.
+function escapeAttr(str) {
+  return String(str).replace(/["'<>\u0000-\u001F\u007F]/g, (ch) => {
+    const map = {
+      '"': "&quot;",
+      "'": "&#39;",
+      "<": "&lt;",
+      ">": "&gt;",
+    };
+    return map[ch] || "";
+  });
+}
+
 /* =========================
    Fake scroll (desktop)
    - scroll en cualquier parte
    - solo se mueve .right__inner
 ========================= */
-(function lockScrollToRightPanel(){
+(function lockScrollToRightPanel() {
   if (window.matchMedia("(max-width: 900px)").matches) return;
 
   const inner = document.querySelector(".right__inner");
   const spacer = document.getElementById("scroll-spacer");
-  if(!inner || !spacer) return;
+  if (!inner || !spacer) return;
 
   let maxScroll = 0;
 
-  function viewportH(){
+  function viewportH() {
     return document.documentElement.clientHeight;
   }
 
-  function recalc(){
+  function recalc() {
     const contentH = inner.scrollHeight;
     const viewH = viewportH();
 
@@ -104,8 +121,8 @@ function escapeHtml(str) {
   }
 
   let ticking = false;
-  function requestTick(){
-    if(ticking) return;
+  function requestTick() {
+    if (ticking) return;
     ticking = true;
 
     requestAnimationFrame(() => {
@@ -130,7 +147,7 @@ function escapeHtml(str) {
   ro.observe(inner);
 
   // Recalcula cuando cargan imágenes dentro del panel derecho
-  inner.querySelectorAll("img").forEach(img => {
+  inner.querySelectorAll("img").forEach((img) => {
     if (!img.complete) img.addEventListener("load", recalc, { once: true });
   });
 
