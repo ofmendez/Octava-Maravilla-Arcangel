@@ -48,7 +48,7 @@
                      href="${escapeAttr(url)}"
                      target="_blank"
                      rel="noopener">
-                     tickets
+                     Tickets
                      <img class="btn-icon" src="./assets/tickets-icon.svg" alt="" aria-hidden="true" />
                    </a>`
                 : `<span class="date-btn is-coming" aria-disabled="true">Coming Soon</span>`
