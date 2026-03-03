@@ -8,55 +8,56 @@
   // Orden por fecha
   dates.sort((a, b) => (a.dateISO || "").localeCompare(b.dateISO || ""));
 
+  const now = Date.now();
+
   root.innerHTML = dates.map((d, i) => {
     const city = escapeHtml(d.city || "");
     const country = escapeHtml(d.country || "");
     const venue = escapeHtml(d.venue || "");
     const date = formatDDMM(d.dateISO);
+
     const url = (d.ticketUrl || "").trim();
+    const saleStart = d.saleStartUTC ? Date.parse(d.saleStartUTC) : Infinity;
 
-    // Si no hay link todavía, el botón queda deshabilitado
-   const isDisabled = !url;
+    // Solo se habilita si hay link Y ya pasó la hora programada
+    const canBuy = !!url && now >= saleStart;
 
-return `
-  <article class="date-row ${i % 2 ? "is-alt" : ""}">
-    <div class="date-left">
-      <img class="date-icon" src="./assets/assets.svg" alt="" aria-hidden="true" />
-      <div class="date-place">
-        <div class="date-city">${city}</div>
-        <div class="date-country">${country}</div>
-      </div>
-    </div>
+    return `
+      <article class="date-row ${i % 2 ? "is-alt" : ""}">
+        <div class="date-left">
+          <img class="date-icon" src="./assets/assets.svg" alt="" aria-hidden="true" />
+          <div class="date-place">
+            <div class="date-city">${city}</div>
+            <div class="date-country">${country}</div>
+          </div>
+        </div>
 
-    <div class="date-mid">
-      <div class="date-venue">${venue}</div>
-    </div>
+        <div class="date-mid">
+          <div class="date-venue">${venue}</div>
+        </div>
 
-    <div class="date-right">
-      <div class="date-day">${date}</div>
+        <div class="date-right">
+          <div class="date-day">${date}</div>
 
-      ${
-        isDisabled
-          ? `<span class="date-btn is-coming" aria-disabled="true">
-               Coming Soon
-             </span>`
-          : `<a class="date-btn"
-               href="${url}"
-               target="_blank"
-               rel="noopener">
-               tickets
-               <img class="btn-icon" src="./assets/tickets-icon.svg" alt="" aria-hidden="true" />
-             </a>`
-      }
-
-    </div>
-  </article>
-`;
+          ${
+            canBuy
+              ? `<a class="date-btn"
+                   href="${url}"
+                   target="_blank"
+                   rel="noopener">
+                   tickets
+                   <img class="btn-icon" src="./assets/tickets-icon.svg" alt="" aria-hidden="true" />
+                 </a>`
+              : `<span class="date-btn is-coming" aria-disabled="true">Coming Soon</span>`
+          }
+        </div>
+      </article>
+    `;
   }).join("");
 })();
 
 function formatDDMM(dateISO) {
-  // dateISO: YYYY-MM-DD -> DD/MM (sin depender de timezone)
+  // YYYY-MM-DD -> DD/MM (sin depender de timezone)
   if (!dateISO || !/^\d{4}-\d{2}-\d{2}$/.test(dateISO)) return "";
   const [, mm, dd] = dateISO.split("-");
   return `${dd}/${mm}`;
@@ -72,8 +73,14 @@ function escapeHtml(str) {
   }[m]));
 }
 
+/* =========================
+   Fake scroll (desktop)
+   - scroll en cualquier parte
+   - solo se mueve .right__inner
+========================= */
 (function lockScrollToRightPanel(){
-    if (window.matchMedia("(max-width: 900px)").matches) return;
+  if (window.matchMedia("(max-width: 900px)").matches) return;
+
   const inner = document.querySelector(".right__inner");
   const spacer = document.getElementById("scroll-spacer");
   if(!inner || !spacer) return;
@@ -81,7 +88,6 @@ function escapeHtml(str) {
   let maxScroll = 0;
 
   function viewportH(){
-    // más estable que innerHeight para calcular el rango real del scroll
     return document.documentElement.clientHeight;
   }
 
@@ -91,9 +97,8 @@ function escapeHtml(str) {
 
     maxScroll = Math.max(0, contentH - viewH);
 
-    // clave: el rango de scroll del body es (spacerHeight - viewH)
-    // entonces spacerHeight debe ser (maxScroll + viewH) exacto.
-    spacer.style.height = inner.scrollHeight + "px";
+    // Altura TOTAL del documento = altura del contenido derecho
+    spacer.style.height = contentH + "px";
 
     requestTick();
   }
@@ -111,8 +116,7 @@ function escapeHtml(str) {
 
       inner.style.transform = `translate3d(0, ${-y}px, 0)`;
 
-      // si por cualquier razón el body se pasa del rango, lo corregimos
-      // (esto elimina ese “extra” al final)
+      // Evita scroll sobrante
       if (yRaw > maxScroll) window.scrollTo(0, maxScroll);
     });
   }
@@ -121,11 +125,11 @@ function escapeHtml(str) {
   window.addEventListener("resize", recalc);
   window.addEventListener("load", recalc);
 
-  // Recalcula si cambia el alto del contenido (render, fuentes, etc.)
+  // Recalcula si cambia el alto del contenido
   const ro = new ResizeObserver(recalc);
   ro.observe(inner);
 
-  // Recalcula cuando cargan imágenes dentro del panel derecho (por si acaso)
+  // Recalcula cuando cargan imágenes dentro del panel derecho
   inner.querySelectorAll("img").forEach(img => {
     if (!img.complete) img.addEventListener("load", recalc, { once: true });
   });
