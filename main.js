@@ -1,11 +1,21 @@
 // main.js
-(function () {
+
+/* =========================
+   Render Tour Dates
+========================= */
+(function renderDates() {
   const root = document.getElementById("dates");
   if (!root) return;
 
   const dates = Array.isArray(window.TOUR_DATES) ? window.TOUR_DATES : [];
 
-  // Orden por fecha
+  // Si no hay data, muestra nada (o un mensaje si prefieres)
+  if (!dates.length) {
+    root.innerHTML = "";
+    return;
+  }
+
+  // Orden por fecha (YYYY-MM-DD)
   dates.sort((a, b) => (a.dateISO || "").localeCompare(b.dateISO || ""));
 
   const now = Date.now();
@@ -19,31 +29,35 @@
 
       const url = (d.ticketUrl || "").trim();
 
-      // NUEVO: sold out manual
+      // Flags
       const isSoldOut = d.soldOut === true;
+      const isNew = d.isNew === true || d.isNew === "true" || d.isNew === 1;
 
-      // saleStartUTC es OPCIONAL:
-      // - si existe: habilita el botón cuando llegue esa hora
-      // - si NO existe: si hay link, se habilita de inmediato
+      // Si existe saleStartUTC, solo habilita cuando llegue esa hora.
+      // Si NO existe, y hay url, habilita de inmediato.
       const saleStart = d.saleStartUTC ? Date.parse(d.saleStartUTC) : null;
       const canBuy = !!url && (saleStart === null || now >= saleStart);
 
+      // Icono: normal vs "new"
+      const iconSrc = isNew ? "./assets/assets_new.svg" : "./assets/assets.svg";
+
+      // CTA
       const ctaHtml = isSoldOut
         ? `<span class="date-btn is-soldout" aria-disabled="true">Sold Out</span>`
         : canBuy
           ? `<a class="date-btn"
-               href="${escapeAttr(url)}"
-               target="_blank"
-               rel="noopener">
-               Tickets
-               <img class="btn-icon" src="./assets/tickets-icon.svg" alt="" aria-hidden="true" />
-             </a>`
+                 href="${escapeAttr(url)}"
+                 target="_blank"
+                 rel="noopener">
+                 Tickets
+                 <img class="btn-icon" src="./assets/tickets-icon.svg" alt="" aria-hidden="true" />
+               </a>`
           : `<span class="date-btn is-coming" aria-disabled="true">Coming Soon</span>`;
 
       return `
         <article class="date-row ${i % 2 ? "is-alt" : ""}">
           <div class="date-left">
-            <img class="date-icon" src="./assets/assets.svg" alt="" aria-hidden="true" />
+            <img class="date-icon" src="${iconSrc}" alt="" aria-hidden="true" />
             <div class="date-place">
               <div class="date-city">${city}</div>
               <div class="date-country">${country}</div>
@@ -64,6 +78,9 @@
     .join("");
 })();
 
+/* =========================
+   Helpers
+========================= */
 function formatDDMM(dateISO) {
   // YYYY-MM-DD -> DD/MM (sin depender de timezone)
   if (!dateISO || !/^\d{4}-\d{2}-\d{2}$/.test(dateISO)) return "";
@@ -94,141 +111,64 @@ function escapeAttr(str) {
   });
 }
 
-
-(function renderMerch(){
-  const track = document.getElementById("merchTrack");
-  if (!track) return;
-
-  // Cambia los src a los nombres reales de tus .webp en /assets
-  const merch = [
-    {
-      name: "La Octava Maravilla Tour Tee - Black",
-      price: "$45.00",
-      url: "https://shop.la8vamaravilla.com/products/la-octava-maravilla-tour-tee-black?variant=52043042947365",
-      img: "./assets/merch-tee-black.webp"
-    },
-    {
-      name: "La Octava Maravilla Tour Tee - Dark Gray",
-      price: "$45.00",
-      url: "https://shop.la8vamaravilla.com/products/la-octava-maravilla-tour-tee-gray?variant=52043040588069",
-      img: "./assets/merch-tee-dark-gray.webp"
-    },
-    {
-      name: "La Octava Maravilla Tour Tee - Light Gray",
-      price: "$45.00",
-      url: "https://shop.la8vamaravilla.com/products/la-octava-maravilla-tour-tee-light-gray?variant=52043021615397",
-      img: "./assets/merch-tee-light-gray.webp"
-    },
-    {
-      name: "La Octava Maravilla Tour Hoodie - Black",
-      price: "$100.00",
-      url: "https://shop.la8vamaravilla.com/products/la-octava-maravilla-tour-hoodie-black?variant=52039130644773",
-      img: "./assets/merch-hoodie-black.webp"
-    },
-    {
-      name: "La Octava Maravilla Tour Hoodie - Dark Gray",
-      price: "$100.00",
-      url: "https://shop.la8vamaravilla.com/products/la-octava-maravilla-tour-hoodie-dark-gray?variant=52039128514853",
-      img: "./assets/merch-hoodie-dark-gray.webp"
-    },
-    {
-      name: "La Octava Maravilla Tour Hoodie - Light Gray",
-      price: "$100.00",
-      url: "https://shop.la8vamaravilla.com/products/la-octava-maravilla-tour-hoodie-light-gray?variant=52039118520613",
-      img: "./assets/merch-hoodie-light-gray.webp"
-    }
-  ];
-
-  track.innerHTML = merch.map((p) => `
-    <a class="merch-card" href="${escapeAttr(p.url)}" target="_blank" rel="noopener">
-      <div class="merch-card__media">
-        <img class="merch-card__img" src="${escapeAttr(p.img)}" alt="${escapeHtml(p.name)}" loading="lazy" />
-      </div>
-      <div class="merch-card__meta">
-        <div class="merch-card__name">${escapeHtml(p.name)}</div>
-        <div class="merch-card__price">${escapeHtml(p.price)}</div>
-      </div>
-    </a>
-  `).join("");
-})();
-
-
-
 /* =========================
    Fake scroll (desktop)
    - scroll en cualquier parte
    - solo se mueve .right__inner
 ========================= */
-(function lockScrollToRightPanel(){
+(function lockScrollToRightPanel() {
   if (window.matchMedia("(max-width: 900px)").matches) return;
 
-  const layout = document.querySelector(".layout");
-  const inner  = document.querySelector(".right__inner");
+  const inner = document.querySelector(".right__inner");
   const spacer = document.getElementById("scroll-spacer");
-  const fullband = document.getElementById("fullband");
-  if(!layout || !inner || !spacer || !fullband) return;
+  if (!inner || !spacer) return;
 
-  let maxRight = 0;   // scroll máximo del panel derecho
-  let fullH = 0;      // alto del merch
-  let totalMax = 0;   // scroll total
+  let maxScroll = 0;
 
-  function viewH(){
+  function viewportH() {
     return document.documentElement.clientHeight;
   }
 
-  function recalc(){
-    const vh = viewH();
+  function recalc() {
+    const contentH = inner.scrollHeight;
+    const viewH = viewportH();
 
-    // cuánto recorre la derecha
-    const rightH = inner.scrollHeight;
-    maxRight = Math.max(0, rightH - vh);
+    maxScroll = Math.max(0, contentH - viewH);
 
-    // alto real de la franja
-    fullH = fullband.scrollHeight;
+    // Altura fake exacta = alto del contenido derecho
+    spacer.style.height = contentH + "px";
 
-    // scroll total = derecha + franja
-    totalMax = maxRight + fullH;
-
-    // altura del documento fake
-    spacer.style.height = (vh + totalMax) + "px";
-
-    tick();
+    requestTick();
   }
 
   let ticking = false;
-  function tick(){
-    if(ticking) return;
+  function requestTick() {
+    if (ticking) return;
     ticking = true;
 
     requestAnimationFrame(() => {
       ticking = false;
 
       const yRaw = window.scrollY;
-      const y = Math.min(totalMax, Math.max(0, yRaw));
+      const y = Math.min(maxScroll, Math.max(0, yRaw));
 
-      // 1) derecha: se mueve hasta su final
-      const yRight = Math.min(maxRight, y);
-      inner.style.transform = `translate3d(0, ${-yRight}px, 0)`;
+      inner.style.transform = `translate3d(0, ${-y}px, 0)`;
 
-      // 2) extra scroll: ya terminó la derecha => ahora se mueven ambas columnas + entra merch
-      const yBand = Math.max(0, y - maxRight);
-
-      layout.style.transform   = `translate3d(0, ${-yBand}px, 0)`;
-      fullband.style.transform = `translate3d(0, ${-yBand}px, 0)`;
-
-      if (yRaw > totalMax) window.scrollTo(0, totalMax);
+      // evita scroll “fantasma”
+      if (yRaw > maxScroll) window.scrollTo(0, maxScroll);
     });
   }
 
-  window.addEventListener("scroll", tick, { passive: true });
+  window.addEventListener("scroll", requestTick, { passive: true });
   window.addEventListener("resize", recalc);
   window.addEventListener("load", recalc);
 
+  // Recalcula si cambia el alto del contenido (fechas nuevas, fuentes, etc.)
   const ro = new ResizeObserver(recalc);
   ro.observe(inner);
-  ro.observe(fullband);
 
-  inner.querySelectorAll("img").forEach(img => {
+  // Por si hay imágenes dentro del panel derecho
+  inner.querySelectorAll("img").forEach((img) => {
     if (!img.complete) img.addEventListener("load", recalc, { once: true });
   });
 

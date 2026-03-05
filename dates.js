@@ -20,9 +20,9 @@ window.TOUR_DATES = [
   { dateISO: "2026-09-19", city: "Cdad. de Guatemala", country: "Guatemala", venue: "Explanada 5", ticketUrl: "" },
   { dateISO: "2026-09-24", city: "Cdad. de Panamá", country: "Panamá", venue: "CC Amador", ticketUrl: "" },
   { dateISO: "2026-09-26", city: "Alajuela", country: "Costa Rica", venue: "Parque Viva", ticketUrl: "" },
-  //{ dateISO: "2026-08-14", city: "CDMX", country: "México", venue: "Palacio de los Deportes", ticketUrl: "https://www.ticketmaster.com.mx/arcangel-ciudad-de-mexico-ciudad-de-mexico-08-13-2026/event/140064469FEC6790" },
-  { dateISO: "2026-08-30", city: "Buenos Aires", country: "Argentina", venue: "Movistar Arena", ticketUrl: "https://www.movistararena.com.ar/show/c51ec5d6-233b-4133-8d16-b169c34da639"},
-  { dateISO: "2026-08-03", city: "Guayaquil", country: "Ecuador", venue: "Coliseo Voltaire", ticketUrl: "https://www.ticketshow.com.ec/evento/Arcangel-en-Guayaquil-2026" },
-  { dateISO: "2026-07-29", city: "Quito", country: "Ecuador", venue: "Coliseo Rumiñahui", ticketUrl: "https://www.ticketshow.com.ec/evento/ARCANGEL-QUITO-2026" }
-  //{ dateISO: "2026-05-11", city: "Madrid", country: "España", venue: "Movistar Arena", ticketUrl: "https://www.livenation.es/show/1658095" }
+  //{ dateISO: "2026-08-14", city: "CDMX", country: "México", venue: "Palacio de los Deportes", ticketUrl: "https://www.ticketmaster.com.mx/arcangel-ciudad-de-mexico-ciudad-de-mexico-08-13-2026/event/140064469FEC6790", isNew: true },
+  { dateISO: "2026-08-30", city: "Buenos Aires", country: "Argentina", venue: "Movistar Arena", ticketUrl: "https://www.movistararena.com.ar/show/c51ec5d6-233b-4133-8d16-b169c34da639", isNew: true},
+  { dateISO: "2026-08-03", city: "Guayaquil", country: "Ecuador", venue: "Coliseo Voltaire", ticketUrl: "https://www.ticketshow.com.ec/evento/Arcangel-en-Guayaquil-2026", isNew: true },
+  { dateISO: "2026-07-29", city: "Quito", country: "Ecuador", venue: "Coliseo Rumiñahui", ticketUrl: "https://www.ticketshow.com.ec/evento/ARCANGEL-QUITO-2026", isNew: true }
+  //{ dateISO: "2026-05-11", city: "Madrid", country: "España", venue: "Movistar Arena", ticketUrl: "https://www.livenation.es/show/1658095", isNew: true }
 ];
