@@ -582,3 +582,20 @@ body{
   transform: none;
   background: transparent;
 }
+
+.date-btn.is-soldout{
+  border: 1px solid rgba(255,255,255,.25);
+  color: rgba(255,255,255,.55);
+  background: transparent;
+  cursor: default;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(255,255,255,.55);
+  padding-left: 22px;
+  padding-right: 21.5px ;
+}
+
+.date-btn.is-soldout:hover{
+  transform: none;
+  background: transparent;
+}

@@ -19,11 +19,26 @@
 
       const url = (d.ticketUrl || "").trim();
 
+      // NUEVO: sold out manual
+      const isSoldOut = d.soldOut === true;
+
       // saleStartUTC es OPCIONAL:
       // - si existe: habilita el botón cuando llegue esa hora
       // - si NO existe: si hay link, se habilita de inmediato
       const saleStart = d.saleStartUTC ? Date.parse(d.saleStartUTC) : null;
       const canBuy = !!url && (saleStart === null || now >= saleStart);
+
+      const ctaHtml = isSoldOut
+        ? `<span class="date-btn is-soldout" aria-disabled="true">Sold Out</span>`
+        : canBuy
+          ? `<a class="date-btn"
+               href="${escapeAttr(url)}"
+               target="_blank"
+               rel="noopener">
+               Tickets
+               <img class="btn-icon" src="./assets/tickets-icon.svg" alt="" aria-hidden="true" />
+             </a>`
+          : `<span class="date-btn is-coming" aria-disabled="true">Coming Soon</span>`;
 
       return `
         <article class="date-row ${i % 2 ? "is-alt" : ""}">
@@ -41,18 +56,7 @@
 
           <div class="date-right">
             <div class="date-day">${date}</div>
-
-            ${
-              canBuy
-                ? `<a class="date-btn"
-                     href="${escapeAttr(url)}"
-                     target="_blank"
-                     rel="noopener">
-                     Tickets
-                     <img class="btn-icon" src="./assets/tickets-icon.svg" alt="" aria-hidden="true" />
-                   </a>`
-                : `<span class="date-btn is-coming" aria-disabled="true">Coming Soon</span>`
-            }
+            ${ctaHtml}
           </div>
         </article>
       `;

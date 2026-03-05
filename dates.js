@@ -2,7 +2,7 @@
 // Formato: dateISO (YYYY-MM-DD), city, country, venue, ticketUrl, saleStartUTC (opcional)
 window.TOUR_DATES = [
   { dateISO: "2026-05-13", city: "Barcelona", country: "España", venue: "Sant Jordi Club", ticketUrl: "https://www.livenation.es/show/1656664" },
-  { dateISO: "2026-05-14", city: "Madrid", country: "España", venue: "Movistar Arena", ticketUrl: "https://www.livenation.es/show/1656672" },
+  { dateISO: "2026-05-14", city: "Madrid", country: "España", venue: "Movistar Arena", ticketUrl: "", soldOut: true },
   { dateISO: "2026-07-30", city: "Quito", country: "Ecuador", venue: "Coliseo Rumiñahui", ticketUrl: "https://www.ticketshow.com.ec/evento/ARCANGEL-QUITO-2026" },
   { dateISO: "2026-08-01", city: "Guayaquil", country: "Ecuador", venue: "Coliseo Voltaire", ticketUrl: "https://www.ticketshow.com.ec/evento/Arcangel-en-Guayaquil-2026" },
   { dateISO: "2026-08-13", city: "CDMX", country: "México", venue: "Palacio de los Deportes", ticketUrl: "https://www.ticketmaster.com.mx/arcangel-ciudad-de-mexico-ciudad-de-mexico-08-13-2026/event/140064469FEC6790" },
@@ -18,5 +18,6 @@ window.TOUR_DATES = [
   { dateISO: "2026-09-17", city: "Tegucigalpa", country: "Honduras", venue: "Estadio Chochi Sosa", ticketUrl: "" },
   { dateISO: "2026-09-19", city: "Cdad. de Guatemala", country: "Guatemala", venue: "Explanada 5", ticketUrl: "" },
   { dateISO: "2026-09-24", city: "Cdad. de Panamá", country: "Panamá", venue: "CC Amador", ticketUrl: "" },
-  { dateISO: "2026-09-26", city: "Alajuela", country: "Costa Rica", venue: "Parque Viva", ticketUrl: "" },
+  { dateISO: "2026-09-26", city: "Alajuela", country: "Costa Rica", venue: "Parque Viva", ticketUrl: "" }
+  //{ dateISO: "2026-05-11", city: "Madrid", country: "España", venue: "Movistar Arena", ticketUrl: "https://www.livenation.es/show/1658095" }
 ];
