@@ -11,7 +11,7 @@ window.TOUR_DATES = [
   { dateISO: "2026-08-22", city: "Querétaro", country: "Mexico", venue: "Auditorio Josefa", ticketUrl: "https://www.eticket.mx/masinformacion.aspx?idevento=35192" },
   { dateISO: "2026-08-23", city: "Guadalajara", country: "Mexico", venue: "Auditorio Telmex", ticketUrl: "http://www.ticketmaster.com.mx/arcangel-zapopan-jalisco-08-23-2026/event/1400644CADB69F25" },
   { dateISO: "2026-08-28", city: "Buenos Aires", country: "Argentina", venue: "Movistar Arena", ticketUrl: "https://www.movistararena.com.ar/show/c51ec5d6-233b-4133-8d16-b169c34da639" },
-  { dateISO: "2026-08-31", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "" },
+  { dateISO: "2026-08-31", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "https://www.puntoticket.com/arcangel" },
   { dateISO: "2026-09-05", city: "Medellín", country: "Colombia", venue: "Estadio Atanasio Girardot", ticketUrl: "https://www.ticketmaster.co/event/arcangel-20-aniversario" },
   { dateISO: "2026-09-11", city: "La Paz", country: "Bolivia", venue: "Teatro al Aire Libre", ticketUrl: "" },
   { dateISO: "2026-09-12", city: "Lima", country: "Perú", venue: "Estadio San Marcos", ticketUrl: "https://www.ticketmaster.pe/event/arcangel-la-8va-maravilla-world-tour-home" },
