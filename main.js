@@ -94,64 +94,141 @@ function escapeAttr(str) {
   });
 }
 
+
+(function renderMerch(){
+  const track = document.getElementById("merchTrack");
+  if (!track) return;
+
+  // Cambia los src a los nombres reales de tus .webp en /assets
+  const merch = [
+    {
+      name: "La Octava Maravilla Tour Tee - Black",
+      price: "$45.00",
+      url: "https://shop.la8vamaravilla.com/products/la-octava-maravilla-tour-tee-black?variant=52043042947365",
+      img: "./assets/merch-tee-black.webp"
+    },
+    {
+      name: "La Octava Maravilla Tour Tee - Dark Gray",
+      price: "$45.00",
+      url: "https://shop.la8vamaravilla.com/products/la-octava-maravilla-tour-tee-gray?variant=52043040588069",
+      img: "./assets/merch-tee-dark-gray.webp"
+    },
+    {
+      name: "La Octava Maravilla Tour Tee - Light Gray",
+      price: "$45.00",
+      url: "https://shop.la8vamaravilla.com/products/la-octava-maravilla-tour-tee-light-gray?variant=52043021615397",
+      img: "./assets/merch-tee-light-gray.webp"
+    },
+    {
+      name: "La Octava Maravilla Tour Hoodie - Black",
+      price: "$100.00",
+      url: "https://shop.la8vamaravilla.com/products/la-octava-maravilla-tour-hoodie-black?variant=52039130644773",
+      img: "./assets/merch-hoodie-black.webp"
+    },
+    {
+      name: "La Octava Maravilla Tour Hoodie - Dark Gray",
+      price: "$100.00",
+      url: "https://shop.la8vamaravilla.com/products/la-octava-maravilla-tour-hoodie-dark-gray?variant=52039128514853",
+      img: "./assets/merch-hoodie-dark-gray.webp"
+    },
+    {
+      name: "La Octava Maravilla Tour Hoodie - Light Gray",
+      price: "$100.00",
+      url: "https://shop.la8vamaravilla.com/products/la-octava-maravilla-tour-hoodie-light-gray?variant=52039118520613",
+      img: "./assets/merch-hoodie-light-gray.webp"
+    }
+  ];
+
+  track.innerHTML = merch.map((p) => `
+    <a class="merch-card" href="${escapeAttr(p.url)}" target="_blank" rel="noopener">
+      <div class="merch-card__media">
+        <img class="merch-card__img" src="${escapeAttr(p.img)}" alt="${escapeHtml(p.name)}" loading="lazy" />
+      </div>
+      <div class="merch-card__meta">
+        <div class="merch-card__name">${escapeHtml(p.name)}</div>
+        <div class="merch-card__price">${escapeHtml(p.price)}</div>
+      </div>
+    </a>
+  `).join("");
+})();
+
+
+
 /* =========================
    Fake scroll (desktop)
    - scroll en cualquier parte
    - solo se mueve .right__inner
 ========================= */
-(function lockScrollToRightPanel() {
+(function lockScrollToRightPanel(){
   if (window.matchMedia("(max-width: 900px)").matches) return;
 
-  const inner = document.querySelector(".right__inner");
+  const layout = document.querySelector(".layout");
+  const inner  = document.querySelector(".right__inner");
   const spacer = document.getElementById("scroll-spacer");
-  if (!inner || !spacer) return;
+  const fullband = document.getElementById("fullband");
+  if(!layout || !inner || !spacer || !fullband) return;
 
-  let maxScroll = 0;
+  let maxRight = 0;   // scroll máximo del panel derecho
+  let fullH = 0;      // alto del merch
+  let totalMax = 0;   // scroll total
 
-  function viewportH() {
+  function viewH(){
     return document.documentElement.clientHeight;
   }
 
-  function recalc() {
-    const contentH = inner.scrollHeight;
-    const viewH = viewportH();
+  function recalc(){
+    const vh = viewH();
 
-    maxScroll = Math.max(0, contentH - viewH);
+    // cuánto recorre la derecha
+    const rightH = inner.scrollHeight;
+    maxRight = Math.max(0, rightH - vh);
 
-    // Altura TOTAL del documento = altura del contenido derecho
-    spacer.style.height = contentH + "px";
+    // alto real de la franja
+    fullH = fullband.scrollHeight;
 
-    requestTick();
+    // scroll total = derecha + franja
+    totalMax = maxRight + fullH;
+
+    // altura del documento fake
+    spacer.style.height = (vh + totalMax) + "px";
+
+    tick();
   }
 
   let ticking = false;
-  function requestTick() {
-    if (ticking) return;
+  function tick(){
+    if(ticking) return;
     ticking = true;
 
     requestAnimationFrame(() => {
       ticking = false;
 
       const yRaw = window.scrollY;
-      const y = Math.min(maxScroll, Math.max(0, yRaw));
+      const y = Math.min(totalMax, Math.max(0, yRaw));
 
-      inner.style.transform = `translate3d(0, ${-y}px, 0)`;
+      // 1) derecha: se mueve hasta su final
+      const yRight = Math.min(maxRight, y);
+      inner.style.transform = `translate3d(0, ${-yRight}px, 0)`;
 
-      // Evita scroll sobrante
-      if (yRaw > maxScroll) window.scrollTo(0, maxScroll);
+      // 2) extra scroll: ya terminó la derecha => ahora se mueven ambas columnas + entra merch
+      const yBand = Math.max(0, y - maxRight);
+
+      layout.style.transform   = `translate3d(0, ${-yBand}px, 0)`;
+      fullband.style.transform = `translate3d(0, ${-yBand}px, 0)`;
+
+      if (yRaw > totalMax) window.scrollTo(0, totalMax);
     });
   }
 
-  window.addEventListener("scroll", requestTick, { passive: true });
+  window.addEventListener("scroll", tick, { passive: true });
   window.addEventListener("resize", recalc);
   window.addEventListener("load", recalc);
 
-  // Recalcula si cambia el alto del contenido
   const ro = new ResizeObserver(recalc);
   ro.observe(inner);
+  ro.observe(fullband);
 
-  // Recalcula cuando cargan imágenes dentro del panel derecho
-  inner.querySelectorAll("img").forEach((img) => {
+  inner.querySelectorAll("img").forEach(img => {
     if (!img.complete) img.addEventListener("load", recalc, { once: true });
   });
 
