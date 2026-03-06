@@ -14,7 +14,7 @@ window.TOUR_DATES = [
   { dateISO: "2026-08-28", city: "Buenos Aires", country: "Argentina", venue: "Movistar Arena", ticketUrl: "", soldOut: true },
   { dateISO: "2026-08-31", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "", soldOut: true },
   { dateISO: "2026-09-05", city: "Medellín", country: "Colombia", venue: "Estadio Atanasio Girardot", ticketUrl: "", soldOut: true },
-  { dateISO: "2026-09-11", city: "La Paz", country: "Bolivia", venue: "Teatro al Aire Libre", ticketUrl: "" },
+  { dateISO: "2026-09-11", city: "La Paz", country: "Bolivia", venue: "Teatro al Aire Libre", ticketUrl: "https://todotix.com.bo/ticket/arcangel", isNew: true },
   { dateISO: "2026-09-12", city: "Lima", country: "Perú", venue: "Estadio San Marcos", ticketUrl: "https://www.ticketmaster.pe/event/arcangel-la-8va-maravilla-world-tour-home" },
   { dateISO: "2026-09-17", city: "Tegucigalpa", country: "Honduras", venue: "Estadio Chochi Sosa", ticketUrl: "" },
   { dateISO: "2026-09-19", city: "Cdad. de Guatemala", country: "Guatemala", venue: "Explanada 5", ticketUrl: "" },
