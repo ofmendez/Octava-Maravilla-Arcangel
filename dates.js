@@ -15,6 +15,7 @@ window.TOUR_DATES = [
   { dateISO: "2026-08-31", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "", soldOut: true },
   { dateISO: "2026-09-01", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "", soldOut: true },
   { dateISO: "2026-09-05", city: "Medellín", country: "Colombia", venue: "Estadio Atanasio Girardot", ticketUrl: "", soldOut: true },
+  { dateISO: "2026-09-04", city: "Medellín", country: "Colombia", venue: "Estadio Atanasio Girardot", ticketUrl: "", isNew: true},
   { dateISO: "2026-09-11", city: "La Paz", country: "Bolivia", venue: "Teatro al Aire Libre", ticketUrl: "https://todotix.com.bo/ticket/arcangel" },
   { dateISO: "2026-09-12", city: "Lima", country: "Perú", venue: "Estadio San Marcos", ticketUrl: "https://www.ticketmaster.pe/event/arcangel-la-8va-maravilla-world-tour-home" },
   { dateISO: "2026-09-17", city: "Tegucigalpa", country: "Honduras", venue: "Estadio Chochi Sosa", ticketUrl: "" },
@@ -22,12 +23,13 @@ window.TOUR_DATES = [
   { dateISO: "2026-09-24", city: "Cdad. de Panamá", country: "Panamá", venue: "CC Amador", ticketUrl: "" },
   { dateISO: "2026-09-26", city: "Alajuela", country: "Costa Rica", venue: "Parque Viva", ticketUrl: "" },
   { dateISO: "2026-08-14", city: "CDMX", country: "México", venue: "Palacio de los Deportes", ticketUrl: "https://www.ticketmaster.com.mx/arcangel-ciudad-de-mexico-14-08-2026/event/14006446A1F56F31"},
-  { dateISO: "2026-08-29", city: "Buenos Aires", country: "Argentina", venue: "Movistar Arena", ticketUrl: "", isNew: true },
+  { dateISO: "2026-08-29", city: "Buenos Aires", country: "Argentina", venue: "Movistar Arena", ticketUrl: "", soldOut: true},
   { dateISO: "2026-08-30", city: "Buenos Aires", country: "Argentina", venue: "Movistar Arena", ticketUrl: "", soldOut: true},
   { dateISO: "2026-08-03", city: "Guayaquil", country: "Ecuador", venue: "Coliseo Voltaire", ticketUrl: "", soldOut: true },
   { dateISO: "2026-07-29", city: "Quito", country: "Ecuador", venue: "Coliseo Rumiñahui", ticketUrl: "", soldOut: true},
   { dateISO: "2026-05-11", city: "Madrid", country: "España", venue: "Movistar Arena", ticketUrl: "https://www.livenation.es/show/1658095" },
-  { dateISO: "2026-07-28", city: "Quito", country: "Ecuador", venue: "Coliseo Rumiñahui", ticketUrl: "https://www.ticketshow.com.ec/evento/ARCANGEL-3ERA-FUNCION-QUITO-2026?queueittoken=e_arcangel3rauio~ts_1773072288~ce_true~q_f76e13b7-c8d6-4f0e-806b-d7bdb7d87eea~rt_queue~h_c48e840cf1f9be90c26af02bb989c07e99e359e88d87ac16cb7aefe53c00926b", isNew: true},
-  { dateISO: "2026-08-04", city: "Guayaquil", country: "Ecuador", venue: "Coliseo Voltaire", ticketUrl: "https://www.ticketshow.com.ec/evento/ARCANGEL-4TA-FUNCION-GUAYAQUIL-2026?queueittoken=e_arcangel4tagye~ts_1773072548~ce_true~q_d7b8a1ec-dcc6-4699-adc4-f8ec7d782b57~rt_queue~h_4794f65b4c0967ab30c769f7826300606c75e9b13ab6475c91e1d397bf0f7256", isNew: true},
-  { dateISO: "2026-09-02", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "https://www.puntoticket.com/arcangel", isNew: true },
+  { dateISO: "2026-07-28", city: "Quito", country: "Ecuador", venue: "Coliseo Rumiñahui", ticketUrl: "https://www.ticketshow.com.ec/evento/ARCANGEL-3ERA-FUNCION-QUITO-2026?queueittoken=e_arcangel3rauio~ts_1773072288~ce_true~q_f76e13b7-c8d6-4f0e-806b-d7bdb7d87eea~rt_queue~h_c48e840cf1f9be90c26af02bb989c07e99e359e88d87ac16cb7aefe53c00926b"},
+  { dateISO: "2026-08-04", city: "Guayaquil", country: "Ecuador", venue: "Coliseo Voltaire", ticketUrl: "https://www.ticketshow.com.ec/evento/ARCANGEL-4TA-FUNCION-GUAYAQUIL-2026?queueittoken=e_arcangel4tagye~ts_1773072548~ce_true~q_d7b8a1ec-dcc6-4699-adc4-f8ec7d782b57~rt_queue~h_4794f65b4c0967ab30c769f7826300606c75e9b13ab6475c91e1d397bf0f7256"},
+  { dateISO: "2026-09-02", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "https://www.puntoticket.com/arcangel"}
 ];
+
