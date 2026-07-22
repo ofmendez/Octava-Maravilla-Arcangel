@@ -28,7 +28,6 @@ window.TOUR_DATES = [
   { dateISO: "2026-07-28", city: "Quito", country: "Ecuador", venue: "Coliseo Rumiñahui", ticketUrl: "https://www.ticketshow.com.ec/evento/ARCANGEL-3ERA-FUNCION-QUITO-2026?queueittoken=e_arcangel3rauio~ts_1773072288~ce_true~q_f76e13b7-c8d6-4f0e-806b-d7bdb7d87eea~rt_queue~h_c48e840cf1f9be90c26af02bb989c07e99e359e88d87ac16cb7aefe53c00926b"},
   { dateISO: "2026-08-04", city: "Guayaquil", country: "Ecuador", venue: "Coliseo Voltaire", ticketUrl: "https://www.ticketshow.com.ec/evento/ARCANGEL-4TA-FUNCION-GUAYAQUIL-2026?queueittoken=e_arcangel4tagye~ts_1773072548~ce_true~q_d7b8a1ec-dcc6-4699-adc4-f8ec7d782b57~rt_queue~h_4794f65b4c0967ab30c769f7826300606c75e9b13ab6475c91e1d397bf0f7256"},
   { dateISO: "2026-09-02", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "https://www.puntoticket.com/arcangel"},
-  { dateISO: "2026-07-18", city: "San Salvador", country: "El Salvador", venue: "Parque de Pelota Saturnino Bengoa", ticketUrl: "https://www.billetix.co/events/arcangel"},
   { dateISO: "2026-08-08", city: "Asunción", country: "Paraguay", venue: "Jockey Club", ticketUrl: "https://ticketea.com.py/events/arcangel"},
   { dateISO: "2026-10-09", city: "Orlando, FL", country: "USA", venue: "Kia Center", ticketUrl: "https://www.ticketmaster.com/event/220064AEADB86CCE"},
   { dateISO: "2026-10-11", city: "Miami, FL", country: "USA", venue: "Kaseya Center", ticketUrl: "https://www.ticketmaster.com/event/0D0064AC03232957"},
