@@ -45,6 +45,5 @@ window.TOUR_DATES = [
   { dateISO: "2026-11-18", city: "Salt Lake City, UT", country: "USA", venue: "The Union Event Center", ticketUrl: "https://www.ticketmaster.com/event/1E0064B4954A8177"},
   { dateISO: "2026-11-20", city: "Inglewood, CA", country: "USA", venue: "YouTube Theater", ticketUrl: "https://www.ticketmaster.com/event/0A0064A792CA7806"},
   { dateISO: "2026-11-21", city: "San Jose, CA", country: "USA", venue: "San Jose Civic", ticketUrl: "https://www.ticketmaster.com/event/1C0064ACCB0A6B9B"},
-  { dateISO: "2026-09-10", city: "Santa Cruz", country: "Bolivia", venue: "Sonilum Plaza", ticketUrl: "https://todotix.com.bo/ticket/arcangelsantacruz"},
-  { dateISO: "2026-07-25", city: "Santiago", country: "República Dominicana", venue: "Estadio Cibao", ticketUrl: "https://www.tuboleta.com.do/arcangel", isNew: true}
+  { dateISO: "2026-09-10", city: "Santa Cruz", country: "Bolivia", venue: "Sonilum Plaza", ticketUrl: "https://todotix.com.bo/ticket/arcangelsantacruz"}
 ];
