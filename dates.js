@@ -1,9 +1,6 @@
 // dates.js
 // Formato: dateISO (YYYY-MM-DD), city, country, venue, ticketUrl, saleStartUTC (opcional)
 window.TOUR_DATES = [
-  { dateISO: "2026-08-13", city: "CDMX", country: "México", venue: "Palacio de los Deportes", ticketUrl: "", soldOut: true },
-  { dateISO: "2026-08-20", city: "Mérida", country: "Mexico", venue: "Foro GNP", ticketUrl: "https://www.eticket.mx/masinformacion.aspx?idevento=35208" },
-  { dateISO: "2026-08-23", city: "Guadalajara", country: "Mexico", venue: "Auditorio Telmex", ticketUrl: "http://www.ticketmaster.com.mx/arcangel-zapopan-jalisco-08-23-2026/event/1400644CADB69F25" },
   { dateISO: "2026-08-28", city: "Buenos Aires", country: "Argentina", venue: "Movistar Arena", ticketUrl: "", soldOut: true },
   { dateISO: "2026-08-31", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "", soldOut: true },
   { dateISO: "2026-09-01", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "", soldOut: true },
@@ -15,7 +12,6 @@ window.TOUR_DATES = [
   { dateISO: "2026-09-19", city: "Cdad. de Guatemala", country: "Guatemala", venue: "Explanada 5", ticketUrl: "https://ticketasa.gt/events/arcángel/" },
   { dateISO: "2026-09-24", city: "Cdad. de Panamá", country: "Panamá", venue: "CC Amador", ticketUrl: "https://www.eticket.pa/" },
   { dateISO: "2026-09-26", city: "Alajuela", country: "Costa Rica", venue: "Parque Viva", ticketUrl: "https://www.eticket.cr/eventos.aspx?idartista=1136" },
-  { dateISO: "2026-08-14", city: "CDMX", country: "México", venue: "Palacio de los Deportes", ticketUrl: "https://www.ticketmaster.com.mx/arcangel-ciudad-de-mexico-14-08-2026/event/14006446A1F56F31"},
   { dateISO: "2026-08-29", city: "Buenos Aires", country: "Argentina", venue: "Movistar Arena", ticketUrl: "", soldOut: true},
   { dateISO: "2026-08-30", city: "Buenos Aires", country: "Argentina", venue: "Movistar Arena", ticketUrl: "", soldOut: true},
   { dateISO: "2026-09-02", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "https://www.puntoticket.com/arcangel"},
