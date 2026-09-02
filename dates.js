@@ -1,7 +1,6 @@
 // dates.js
 // Formato: dateISO (YYYY-MM-DD), city, country, venue, ticketUrl, saleStartUTC (opcional)
 window.TOUR_DATES = [
-  { dateISO: "2026-09-01", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "", soldOut: true },
   { dateISO: "2026-09-05", city: "Medellín", country: "Colombia", venue: "Estadio Atanasio Girardot", ticketUrl: "", soldOut: true },
   { dateISO: "2026-09-04", city: "Medellín", country: "Colombia", venue: "Estadio Atanasio Girardot", ticketUrl: "https://www.ticketmaster.co/event/arcangel-20-aniversario"},
   { dateISO: "2026-09-11", city: "La Paz", country: "Bolivia", venue: "Teatro al Aire Libre", ticketUrl: "https://todotix.com.bo/ticket/arcangel" },
