@@ -1,15 +1,12 @@
 // dates.js
 // Formato: dateISO (YYYY-MM-DD), city, country, venue, ticketUrl, saleStartUTC (opcional)
 window.TOUR_DATES = [
-  { dateISO: "2026-09-05", city: "Medellín", country: "Colombia", venue: "Estadio Atanasio Girardot", ticketUrl: "", soldOut: true },
-  { dateISO: "2026-09-04", city: "Medellín", country: "Colombia", venue: "Estadio Atanasio Girardot", ticketUrl: "https://www.ticketmaster.co/event/arcangel-20-aniversario"},
   { dateISO: "2026-09-11", city: "La Paz", country: "Bolivia", venue: "Teatro al Aire Libre", ticketUrl: "https://todotix.com.bo/ticket/arcangel" },
   { dateISO: "2026-09-12", city: "Lima", country: "Perú", venue: "Estadio San Marcos", ticketUrl: "https://www.ticketmaster.pe/event/arcangel-la-8va-maravilla-world-tour-home" },
   { dateISO: "2026-09-17", city: "Tegucigalpa", country: "Honduras", venue: "Estadio Chochi Sosa", ticketUrl: "https://arcangelhn.funcapital.com/checkout/AZ13zZIeqc6gArgEttr" },
   { dateISO: "2026-09-19", city: "Cdad. de Guatemala", country: "Guatemala", venue: "Explanada 5", ticketUrl: "https://ticketasa.gt/events/arcángel/" },
   { dateISO: "2026-09-24", city: "Cdad. de Panamá", country: "Panamá", venue: "CC Amador", ticketUrl: "https://www.eticket.pa/" },
   { dateISO: "2026-09-26", city: "Alajuela", country: "Costa Rica", venue: "Parque Viva", ticketUrl: "https://www.eticket.cr/eventos.aspx?idartista=1136" },
-  { dateISO: "2026-09-02", city: "Santiago", country: "Chile", venue: "Movistar Arena", ticketUrl: "https://www.puntoticket.com/arcangel"},
   { dateISO: "2026-10-09", city: "Orlando, FL", country: "USA", venue: "Kia Center", ticketUrl: "https://www.ticketmaster.com/event/220064AEADB86CCE"},
   { dateISO: "2026-10-11", city: "Miami, FL", country: "USA", venue: "Kaseya Center", ticketUrl: "https://www.ticketmaster.com/event/0D0064AC03232957"},
   { dateISO: "2026-10-15", city: "Atlanta, GA", country: "USA", venue: "Coca-Cola Roxy", ticketUrl: "https://www.ticketmaster.com/event/0E0064B4AB4BCB0D"},
