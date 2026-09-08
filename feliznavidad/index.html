@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <title>Arcángel | Feliz Navidad</title>
+
+  <meta
+    name="description"
+    content="Official Arcángel. Subscribe for the latest news, music and updates."
+  >
+
+  <meta name="author" content="Arcángel">
+
+  <meta name="robots" content="index, follow">
+
+  <meta name="theme-color" content="#111110">
+
+
+  <!-- CANONICAL -->
+
+  <link
+    rel="canonical"
+    href="https://la8vamaravilla.com/feliznavidad/"
+  >
+
+
+  <!-- FAVICON -->
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/favicon.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="assets/favicon.png"
+  >
+
+
+  <!-- OPEN GRAPH -->
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:title"
+    content="Arcángel | Feliz Navidad"
+  >
+
+  <meta
+    property="og:description"
+    content="Official Arcángel. Subscribe for the latest news, music and updates."
+  >
+
+  <meta
+    property="og:image"
+    content="https://la8vamaravilla.com/feliznavidad/assets/share.jpg"
+  >
+
+  <meta
+    property="og:image:width"
+    content="1200"
+  >
+
+  <meta
+    property="og:image:height"
+    content="630"
+  >
+
+  <meta
+    property="og:image:alt"
+    content="Arcángel Feliz Navidad"
+  >
+
+  <meta
+    property="og:url"
+    content="https://la8vamaravilla.com/feliznavidad/"
+  >
+
+  <meta
+    property="og:site_name"
+    content="Arcángel"
+  >
+
+
+  <!-- X / TWITTER -->
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="Arcángel | Feliz Navidad"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Official Arcángel. Subscribe for the latest news, music and updates."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://la8vamaravilla.com/feliznavidad/assets/share.jpg"
+  >
+
+
+  <!-- GOOGLE FONTS -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- CSS -->
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+<body>
+
+    <h1 class="sr-only">
+  Arcángel Feliz Navidad
+</h1>
+
+    <canvas id="snow-canvas"></canvas>
+
+<main class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <div class="logo-wrapper">
+      <img
+        src="assets/arcangel.svg"
+        alt="Arcangel"
+        class="logo"
+      >
+    </div>
+
+    <img
+      src="assets/duende.webp"
+      alt=""
+      class="elf"
+    >
+
+  </div>
+
+
+  <!-- CONTENIDO CENTRAL -->
+  <section class="subscribe-section">
+
+    <h2 class="christmas-title">
+      FELIZ NAVIDAD
+    </h2>
+
+    <div class="subscribe-form tally-form">
+
+      <iframe
+        data-tally-src="https://tally.so/embed/LZrgkl?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy"
+        width="100%"
+        height="152"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Email Arcangel">
+      </iframe>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <p class="copyright">
+      © 2026 Just in Time / Rimas Entertainment
+    </p>
+
+    <a
+      href="https://rimas.trusthub.com/privacy"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="privacy"
+    >
+      Privacy Policy
+    </a>
+
+  </footer>
+
+</main>
+
+  <script src="script.js"></script>
+
+
+<script>
+  var d = document,
+      w = "https://tally.so/widgets/embed.js",
+      v = function () {
+        if ("undefined" != typeof Tally) {
+          Tally.loadEmbeds();
+        } else {
+          d.querySelectorAll(
+            "iframe[data-tally-src]:not([src])"
+          ).forEach(function (e) {
+            e.src = e.dataset.tallySrc;
+          });
+        }
+      };
+
+  if ("undefined" != typeof Tally) {
+    v();
+  } else if (d.querySelector('script[src="' + w + '"]') == null) {
+    var s = d.createElement("script");
+
+    s.src = w;
+    s.onload = v;
+    s.onerror = v;
+
+    d.body.appendChild(s);
+  }
+</script>
+
+
+</body>
+</html>
