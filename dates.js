@@ -1,8 +1,6 @@
 // dates.js
 // Formato: dateISO (YYYY-MM-DD), city, country, venue, ticketUrl, saleStartUTC (opcional)
 window.TOUR_DATES = [
-  { dateISO: "2026-09-11", city: "La Paz", country: "Bolivia", venue: "Teatro al Aire Libre", ticketUrl: "https://todotix.com.bo/ticket/arcangel" },
-  { dateISO: "2026-09-12", city: "Lima", country: "Perú", venue: "Estadio San Marcos", ticketUrl: "https://www.ticketmaster.pe/event/arcangel-la-8va-maravilla-world-tour-home" },
   { dateISO: "2026-09-17", city: "Tegucigalpa", country: "Honduras", venue: "Estadio Chochi Sosa", ticketUrl: "https://arcangelhn.funcapital.com/checkout/AZ13zZIeqc6gArgEttr" },
   { dateISO: "2026-09-19", city: "Cdad. de Guatemala", country: "Guatemala", venue: "Explanada 5", ticketUrl: "https://ticketasa.gt/events/arcángel/" },
   { dateISO: "2026-09-24", city: "Cdad. de Panamá", country: "Panamá", venue: "CC Amador", ticketUrl: "https://www.eticket.pa/" },
