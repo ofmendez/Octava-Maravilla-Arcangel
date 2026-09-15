@@ -24,6 +24,6 @@ window.TOUR_DATES = [
   { dateISO: "2026-12-11", city: "San Juan", country: "Puerto Rico", venue: "Coliseo de Puerto Rico", ticketUrl: "https://www.ticketera.com/events/detail/la-ultima-parada-la-8va-maravilla-world-tour", soldOut: true},
   { dateISO: "2026-12-12", city: "San Juan", country: "Puerto Rico", venue: "Coliseo de Puerto Rico", ticketUrl: "https://www.ticketera.com/events/detail/la-ultima-parada-la-8va-maravilla-world-tour", soldOut: true},
   { dateISO: "2026-12-13", city: "San Juan", country: "Puerto Rico", venue: "Coliseo de Puerto Rico", ticketUrl: "https://www.ticketera.com/events/detail/la-ultima-parada-la-8va-maravilla-world-tour", soldOut: true},
-  { dateISO: "2026-12-18", city: "San Juan", country: "Puerto Rico", venue: "Coliseo de Puerto Rico", coming: true}
+  { dateISO: "2026-12-18", city: "San Juan", country: "Puerto Rico", venue: "Coliseo de Puerto Rico", ticketUrl: "https://www.ticketera.com/events/detail/la-ultima-parada-la-8va-maravilla-world-tour"}
 ];
 
