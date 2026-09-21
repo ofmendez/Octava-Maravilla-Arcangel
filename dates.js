@@ -1,8 +1,6 @@
 // dates.js
 // Formato: dateISO (YYYY-MM-DD), city, country, venue, ticketUrl, saleStartUTC (opcional)
 window.TOUR_DATES = [
-  { dateISO: "2026-09-17", city: "Tegucigalpa", country: "Honduras", venue: "Estadio Chochi Sosa", ticketUrl: "https://arcangelhn.funcapital.com/checkout/AZ13zZIeqc6gArgEttr" },
-  { dateISO: "2026-09-19", city: "Cdad. de Guatemala", country: "Guatemala", venue: "Explanada 5", ticketUrl: "https://ticketasa.gt/events/arcángel/" },
   { dateISO: "2026-09-24", city: "Cdad. de Panamá", country: "Panamá", venue: "CC Amador", ticketUrl: "https://www.eticket.pa/" },
   { dateISO: "2026-09-26", city: "Alajuela", country: "Costa Rica", venue: "Parque Viva", ticketUrl: "https://www.eticket.cr/eventos.aspx?idartista=1136" },
   { dateISO: "2026-10-09", city: "Orlando, FL", country: "USA", venue: "Kia Center", ticketUrl: "https://www.ticketmaster.com/event/220064AEADB86CCE"},
