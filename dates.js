@@ -1,8 +1,6 @@
 // dates.js
 // Formato: dateISO (YYYY-MM-DD), city, country, venue, ticketUrl, saleStartUTC (opcional)
 window.TOUR_DATES = [
-  { dateISO: "2026-09-24", city: "Cdad. de Panamá", country: "Panamá", venue: "CC Amador", ticketUrl: "https://www.eticket.pa/" },
-  { dateISO: "2026-09-26", city: "Alajuela", country: "Costa Rica", venue: "Parque Viva", ticketUrl: "https://www.eticket.cr/eventos.aspx?idartista=1136" },
   { dateISO: "2026-10-09", city: "Orlando, FL", country: "USA", venue: "Kia Center", ticketUrl: "https://www.ticketmaster.com/event/220064AEADB86CCE"},
   { dateISO: "2026-10-11", city: "Miami, FL", country: "USA", venue: "Kaseya Center", ticketUrl: "https://www.ticketmaster.com/event/0D0064AC03232957"},
   { dateISO: "2026-10-15", city: "Atlanta, GA", country: "USA", venue: "Coca-Cola Roxy", ticketUrl: "https://www.ticketmaster.com/event/0E0064B4AB4BCB0D"},
