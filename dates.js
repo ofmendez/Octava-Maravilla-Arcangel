@@ -1,9 +1,6 @@
 // dates.js
 // Formato: dateISO (YYYY-MM-DD), city, country, venue, ticketUrl, saleStartUTC (opcional)
 window.TOUR_DATES = [
-  { dateISO: "2026-10-24", city: "Philadelphia, PA", country: "USA", venue: "The Met", ticketUrl: "https://www.ticketmaster.com/event/020064ACD3DEEC4B"},
-  { dateISO: "2026-10-28", city: "Boston, MA", country: "USA", venue: "MGM Music Hall at Fenway", ticketUrl: "https://www.ticketmaster.com/event/010064ADC0FD59D3"},
-  { dateISO: "2026-10-31", city: "Chicago, IL", country: "USA", venue: "Rosemont Theatre", ticketUrl: "https://www.ticketmaster.com/event/040064AD908D649F"},
   { dateISO: "2026-11-05", city: "Houston, TX", country: "USA", venue: "713 Music Hall", ticketUrl: "https://www.ticketmaster.com/event/3A0064B49C099594"},
   { dateISO: "2026-11-06", city: "Irving, TX", country: "USA", venue: "The Pavilion at Toyota Music Factory", ticketUrl: "https://www.ticketmaster.com/event/0C0064B4F97758BF"},
   { dateISO: "2026-11-15", city: "Denver, CO", country: "USA", venue: "Paramount Theatre", ticketUrl: "https://www.ticketmaster.com/event/1E0064AEB279A359"},
