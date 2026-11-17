@@ -1,7 +1,6 @@
 // dates.js
 // Formato: dateISO (YYYY-MM-DD), city, country, venue, ticketUrl, saleStartUTC (opcional)
 window.TOUR_DATES = [
-  { dateISO: "2026-11-15", city: "Denver, CO", country: "USA", venue: "Paramount Theatre", ticketUrl: "https://www.ticketmaster.com/event/1E0064AEB279A359"},
   { dateISO: "2026-11-18", city: "Salt Lake City, UT", country: "USA", venue: "The Union Event Center", ticketUrl: "https://www.ticketmaster.com/event/1E0064B4954A8177"},
   { dateISO: "2026-11-20", city: "Inglewood, CA", country: "USA", venue: "YouTube Theater", ticketUrl: "https://www.ticketmaster.com/event/0A0064A792CA7806"},
   { dateISO: "2026-11-21", city: "San Jose, CA", country: "USA", venue: "San Jose Civic", ticketUrl: "https://www.ticketmaster.com/event/1C0064ACCB0A6B9B"},
